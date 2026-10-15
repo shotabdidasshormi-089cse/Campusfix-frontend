@@ -45,14 +45,26 @@ function checkConfirm() {
   if (p !== c) return showError('confirmPassword', 'confirmError', 'Passwords do not match');
   return showError('confirmPassword', 'confirmError', '');
 }
-
 // Login form
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const ok = [checkEmail(), checkPassword(false)].every(Boolean);
-    if (ok) alert('Login validation passed (real login coming in next step)');
+    if (!ok) return;
+
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const password = document.getElementById('password').value;
+    const user = getAll('users').find(function (u) {
+      return u.email.toLowerCase() === email && u.password === password;
+    });
+
+    if (!user) {
+      showError('password', 'passwordError', 'Wrong email or password');
+      return;
+    }
+    setSession(user);
+    window.location.href = 'dashboard.html';
   });
 }
 
@@ -62,6 +74,21 @@ if (registerForm) {
   registerForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const ok = [checkName(), checkEmail(), checkRole(), checkPassword(true), checkConfirm()].every(Boolean);
-    if (ok) alert('Register validation passed (saving coming in next step)');
+    if (!ok) return;
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const role = document.getElementById('role').value;
+    const password = document.getElementById('password').value;
+
+    const exists = getAll('users').some(function (u) { return u.email.toLowerCase() === email; });
+    if (exists) {
+      showError('email', 'emailError', 'This email is already registered');
+      return;
+    }
+
+    addItem('users', { name: name, email: email, password: password, role: role });
+    alert('Account created! Please sign in.');
+    window.location.href = 'login.html';
   });
 }

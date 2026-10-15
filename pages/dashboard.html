@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="container" style="padding-top: 60px;">
+    <h1 id="welcome"></h1>
+    <p id="roleText" style="margin: 10px 0 20px;"></p>
+    <button class="btn btn-primary" id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    const user = requireLogin();
+    if (user) {
+      document.getElementById('welcome').textContent = 'Welcome, ' + user.name;
+      document.getElementById('roleText').textContent = 'Role: ' + user.role;
+      document.getElementById('logoutBtn').addEventListener('click', logout);
+    }
+  </script>
+</body>
+</html>
