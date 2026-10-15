@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Issues - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1>All Issues</h1>
+        <p class="page-sub">Review, prioritize and assign campus issues.</p>
+
+        <div class="alert-critical" id="criticalAlert" hidden></div>
+
+        <div class="card">
+          <div class="toolbar">
+            <input type="text" id="searchBox" class="search-input" placeholder="Search by ID, title, building or reporter">
+            <select id="statusFilter" class="filter-select">
+              <option value="">All status</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+            <span class="muted" id="countText"></span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Issue</th>
+                  <th>Reporter</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Technician</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="issueBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Edit popup -->
+  <div class="modal-overlay" id="editOverlay" hidden>
+    <div class="modal modal-lg">
+      <h3>Edit Issue</h3>
+      <form id="editForm" novalidate>
+        <input type="hidden" id="editId">
+        <div class="form-group">
+          <label for="editTitle">Title</label>
+          <input type="text" id="editTitle">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editCategory">Category</label>
+            <select id="editCategory"></select>
+          </div>
+          <div class="form-group">
+            <label for="editStatus">Status</label>
+            <select id="editStatus">
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editBuilding">Building</label>
+            <select id="editBuilding"></select>
+          </div>
+          <div class="form-group">
+            <label for="editRoom">Room / Location</label>
+            <input type="text" id="editRoom">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editDescription">Description</label>
+          <textarea id="editDescription" rows="3"></textarea>
+        </div>
+        <small class="error" id="editError"></small>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="editCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
