@@ -279,6 +279,33 @@ a { text-decoration: none; }
 @media (max-width: 900px) {
   .dash-grid { grid-template-columns: 1fr; }
 }
+/* Report form */
+.form-card { max-width: 760px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+.form-group textarea:focus { outline: none; border-color: var(--primary); }
+.form-group textarea.invalid { border-color: var(--critical); }
+.photo-preview { margin-top: 12px; display: flex; align-items: flex-end; gap: 14px; }
+.photo-preview img { max-width: 200px; max-height: 150px; border-radius: 8px; border: 1px solid #e5e7eb; }
+
+.success-box { max-width: 480px; text-align: center; padding: 36px; }
+.success-icon { font-size: 44px; margin-bottom: 8px; }
+.success-box p { color: #6b7280; margin: 6px 0; }
+.report-id { font-size: 30px; font-weight: 600; color: var(--primary); margin: 8px 0 22px; }
+.success-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+[hidden] { display: none !important; }
 /* Mobile */
 @media (max-width: 700px) {
   .nav-links { display: none; }

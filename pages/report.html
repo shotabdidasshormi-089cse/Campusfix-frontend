@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report New Issue - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1>Report New Issue</h1>
+        <p class="page-sub">Describe the problem so it can be reviewed and fixed.</p>
+
+        <div class="card form-card" id="formCard">
+          <form id="reportForm" novalidate>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" placeholder="Example: Broken fan in classroom">
+              <small class="error" id="titleError"></small>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category"></select>
+                <small class="error" id="categoryError"></small>
+              </div>
+              <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority">
+                  <option value="Normal">Normal</option>
+                  <option value="High">High</option>
+                  <option value="Critical">Critical</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="building">Building</label>
+                <select id="building"></select>
+                <small class="error" id="buildingError"></small>
+              </div>
+              <div class="form-group">
+                <label for="room">Room / Exact location</label>
+                <input type="text" id="room" placeholder="Example: Room 204">
+                <small class="error" id="roomError"></small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" rows="4" placeholder="Explain the problem in detail"></textarea>
+              <small class="error" id="descriptionError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="photo">Photo (optional, max 500 KB)</label>
+              <input type="file" id="photo" accept="image/*">
+              <small class="error" id="photoError"></small>
+              <div class="photo-preview" id="photoPreview" hidden>
+                <img id="previewImg" alt="Preview">
+                <button type="button" class="btn btn-outline btn-sm" id="removePhoto">Remove photo</button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Report</button>
+          </form>
+        </div>
+
+        <div class="card success-box" id="successBox" hidden>
+          <div class="success-icon">✅</div>
+          <h2>Report submitted</h2>
+          <p>Your Report ID is</p>
+          <div class="report-id" id="reportId"></div>
+          <div class="success-actions">
+            <button class="btn btn-outline" id="newReportBtn">Report another issue</button>
+            <a href="student.html" class="btn btn-primary">View my reports</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/report.js"></script>
+</body>
+</html>
