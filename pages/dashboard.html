@@ -9,21 +9,39 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <div class="container" style="padding-top: 60px;">
-    <h1 id="welcome"></h1>
-    <p id="roleText" style="margin: 10px 0 20px;"></p>
-    <button class="btn btn-primary" id="logoutBtn">Logout</button>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1 id="welcome"></h1>
+        <p class="page-sub">Dashboard content will be added in the next step.</p>
+
+        <!-- Temporary test buttons (porer step e muche dibo) -->
+        <button class="btn btn-primary" id="testToast">Test Toast</button>
+        <button class="btn btn-danger" id="testConfirm">Test Confirm</button>
+      </main>
+    </div>
   </div>
 
   <script src="../js/seed.js"></script>
   <script src="../js/storage.js"></script>
   <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
   <script>
     const user = requireLogin();
     if (user) {
+      renderLayout(user, 'dashboard.html');
       document.getElementById('welcome').textContent = 'Welcome, ' + user.name;
-      document.getElementById('roleText').textContent = 'Role: ' + user.role;
-      document.getElementById('logoutBtn').addEventListener('click', logout);
+      document.getElementById('testToast').addEventListener('click', function () {
+        showToast('This is a success message');
+      });
+      document.getElementById('testConfirm').addEventListener('click', function () {
+        confirmDialog('Do you really want to delete this?', function () {
+          showToast('Deleted successfully');
+        });
+      });
     }
   </script>
 </body>
