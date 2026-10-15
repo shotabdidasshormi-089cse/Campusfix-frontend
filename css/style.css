@@ -306,6 +306,18 @@ a { text-decoration: none; }
   .form-row { grid-template-columns: 1fr; }
 }
 [hidden] { display: none !important; }
+/* Tables */
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th { text-align: left; padding: 12px 10px; background: var(--bg); color: #4b5563; font-weight: 600; white-space: nowrap; }
+.table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.table tr:last-child td { border-bottom: none; }
+.table .actions { white-space: nowrap; }
+.empty-cell { text-align: center; color: #6b7280; padding: 30px 10px !important; }
+.muted { color: #6b7280; }
+.modal-lg { max-width: 560px; max-height: 90vh; overflow-y: auto; }
+.modal .form-group { margin-bottom: 12px; }
 /* Mobile */
 @media (max-width: 700px) {
   .nav-links { display: none; }
