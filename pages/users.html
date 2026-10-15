@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Manage Users</h1>
+            <p class="page-sub">Add, edit or remove students, technicians and administrators.</p>
+          </div>
+          <button class="btn btn-primary" id="addBtn">+ Add User</button>
+        </div>
+
+        <div class="card">
+          <div class="toolbar">
+            <input type="text" id="searchBox" class="search-input" placeholder="Search by name or email">
+            <select id="roleFilter" class="filter-select">
+              <option value="">All roles</option>
+              <option value="student">Student</option>
+              <option value="technician">Technician</option>
+              <option value="admin">Administrator</option>
+            </select>
+            <span class="muted" id="countText"></span>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Issues</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="userBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add / Edit popup -->
+  <div class="modal-overlay" id="formOverlay" hidden>
+    <div class="modal modal-lg">
+      <h3 id="formTitle">Add User</h3>
+      <form id="userForm" novalidate>
+        <div class="form-group">
+          <label for="uName">Full Name</label>
+          <input type="text" id="uName" placeholder="Full name">
+          <small class="error" id="uNameError"></small>
+        </div>
+        <div class="form-group">
+          <label for="uEmail">Email</label>
+          <input type="email" id="uEmail" placeholder="user@example.com">
+          <small class="error" id="uEmailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="uRole">Role</label>
+          <select id="uRole">
+            <option value="student">Student</option>
+            <option value="technician">Technician</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="uPassword">Password</label>
+          <input type="password" id="uPassword" placeholder="Minimum 8 characters">
+          <small class="error" id="uPasswordError"></small>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="formCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="formSave">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/users.js"></script>
+</body>
+</html>

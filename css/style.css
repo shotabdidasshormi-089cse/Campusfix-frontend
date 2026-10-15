@@ -245,7 +245,11 @@ a { text-decoration: none; }
 .modal h3 { margin-bottom: 8px; }
 .modal p { color: #4b5563; font-size: 14px; margin-bottom: 20px; }
 .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-
+/* Role badges */
+.badge-role-admin { background: #7c3aed; }
+.badge-role-technician { background: #0891b2; }
+.badge-role-student { background: #4b5563; }
+.modal .error { min-height: 0; }
 /* Mobile sidebar */
 @media (max-width: 800px) {
   .sidebar { transform: translateX(-100%); transition: 0.25s; }
