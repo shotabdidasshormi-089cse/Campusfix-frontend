@@ -15,11 +15,20 @@
       <header class="topbar" id="topbar"></header>
       <main class="content">
         <h1 id="welcome"></h1>
-        <p class="page-sub">Dashboard content will be added in the next step.</p>
+        <p class="page-sub">Here is a quick overview of campus issues.</p>
 
-        <!-- Temporary test buttons (porer step e muche dibo) -->
-        <button class="btn btn-primary" id="testToast">Test Toast</button>
-        <button class="btn btn-danger" id="testConfirm">Test Confirm</button>
+        <div class="stat-grid" id="statGrid"></div>
+
+        <div class="dash-grid">
+          <div class="card">
+            <h3 class="card-title">Recent Activity</h3>
+            <div id="activityList"></div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Quick Links</h3>
+            <div id="quickLinks" class="quick-links"></div>
+          </div>
+        </div>
       </main>
     </div>
   </div>
@@ -29,20 +38,6 @@
   <script src="../js/auth.js"></script>
   <script src="../js/utils.js"></script>
   <script src="../js/layout.js"></script>
-  <script>
-    const user = requireLogin();
-    if (user) {
-      renderLayout(user, 'dashboard.html');
-      document.getElementById('welcome').textContent = 'Welcome, ' + user.name;
-      document.getElementById('testToast').addEventListener('click', function () {
-        showToast('This is a success message');
-      });
-      document.getElementById('testConfirm').addEventListener('click', function () {
-        confirmDialog('Do you really want to delete this?', function () {
-          showToast('Deleted successfully');
-        });
-      });
-    }
-  </script>
+  <script src="../js/dashboard.js"></script>
 </body>
 </html>

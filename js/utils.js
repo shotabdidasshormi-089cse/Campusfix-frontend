@@ -39,3 +39,8 @@ function priorityBadge(priority) {
   const map = { 'Normal': 'badge-normal', 'High': 'badge-high', 'Critical': 'badge-critical' };
   return '<span class="badge ' + (map[priority] || '') + '">' + priority + '</span>';
 }
+function esc(text) {
+  const d = document.createElement('div');
+  d.textContent = text == null ? '' : text;
+  return d.innerHTML;
+}
