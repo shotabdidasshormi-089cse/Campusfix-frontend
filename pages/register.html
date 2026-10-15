@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <a href="../index.html" class="logo">CampusFix <span>AI</span></a>
+    <h2>Create account</h2>
+    <p class="auth-sub">Join CampusFix AI today</p>
+
+    <form id="registerForm" novalidate>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your full name">
+        <small class="error" id="nameError"></small>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+        <small class="error" id="emailError"></small>
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role">
+          <option value="">Select role</option>
+          <option value="student">Student</option>
+          <option value="technician">Technician</option>
+          <option value="admin">Administrator</option>
+        </select>
+        <small class="error" id="roleError"></small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Minimum 8 characters">
+        <small class="error" id="passwordError"></small>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Re-enter password">
+        <small class="error" id="confirmError"></small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Register</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="login.html">Sign In</a></p>
+  </div>
+</body>
+</html>
