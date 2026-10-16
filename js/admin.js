@@ -149,6 +149,9 @@ function removeIssue(id) {
     getAll('updates')
       .filter(function (u) { return u.issueId === id; })
       .forEach(function (u) { deleteItem('updates', u.id); });
+       getAll('notes')
+      .filter(function (n) { return n.issueId === id; })
+      .forEach(function (n) { deleteItem('notes', n.id); });
     deleteItem('issues', id);
     showToast('Issue deleted');
     renderTable();

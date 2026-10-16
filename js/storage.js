@@ -1,4 +1,4 @@
-const DB_NAMES = ['users', 'buildings', 'categories', 'issues', 'updates'];
+const DB_NAMES = ['users', 'buildings', 'categories', 'issues', 'updates', 'notes'];
 
 function initDB() {
   DB_NAMES.forEach(function (name) {

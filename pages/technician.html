@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tasks - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1>My Tasks</h1>
+        <p class="page-sub">Issues assigned to you. Urgent tasks are shown first.</p>
+
+        <div class="toolbar">
+          <select id="statusFilter" class="filter-select">
+            <option value="">All status</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+          <span class="muted" id="countText"></span>
+        </div>
+
+        <div class="task-grid" id="taskList"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add / Edit note popup -->
+  <div class="modal-overlay" id="noteOverlay" hidden>
+    <div class="modal">
+      <h3 id="noteTitle">Add Note</h3>
+      <form id="noteForm" novalidate>
+        <div class="form-group">
+          <label for="noteText">Progress note</label>
+          <textarea id="noteText" rows="4" placeholder="Write what you did or what is needed"></textarea>
+          <small class="error" id="noteTextError"></small>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="noteCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/technician.js"></script>
+</body>
+</html>
