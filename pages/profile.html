@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1>My Profile</h1>
+        <p class="page-sub">View and update your account information.</p>
+
+        <div class="profile-grid">
+          <!-- Summary -->
+          <div class="card profile-card">
+            <div class="avatar" id="avatar"></div>
+            <h2 id="pTitle"></h2>
+            <p class="muted" id="pMail"></p>
+            <div id="pRole" style="margin: 10px 0 18px;"></div>
+            <div class="profile-stats" id="pStats"></div>
+          </div>
+
+          <div>
+            <!-- Edit info -->
+            <div class="card" style="margin-bottom: 20px;">
+              <h3 class="card-title">Edit Information</h3>
+              <form id="profileForm" novalidate>
+                <div class="form-group">
+                  <label for="pName">Full Name</label>
+                  <input type="text" id="pName">
+                  <small class="error" id="pNameError"></small>
+                </div>
+                <div class="form-group">
+                  <label for="pEmail">Email</label>
+                  <input type="email" id="pEmail">
+                  <small class="error" id="pEmailError"></small>
+                </div>
+                <div class="form-group">
+                  <label for="pRoleInput">Role</label>
+                  <input type="text" id="pRoleInput" disabled>
+                  <small class="muted">Role can only be changed by an administrator.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </form>
+            </div>
+
+            <!-- Change password -->
+            <div class="card" style="margin-bottom: 20px;">
+              <h3 class="card-title">Change Password</h3>
+              <form id="passwordForm" novalidate>
+                <div class="form-group">
+                  <label for="curPass">Current Password</label>
+                  <input type="password" id="curPass">
+                  <small class="error" id="curPassError"></small>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="newPass">New Password</label>
+                    <input type="password" id="newPass" placeholder="Minimum 8 characters">
+                    <small class="error" id="newPassError"></small>
+                  </div>
+                  <div class="form-group">
+                    <label for="confPass">Confirm New Password</label>
+                    <input type="password" id="confPass">
+                    <small class="error" id="confPassError"></small>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+              </form>
+            </div>
+
+            <!-- Delete account -->
+            <div class="card danger-zone">
+              <h3 class="card-title">Delete Account</h3>
+              <p class="muted" style="margin-bottom: 14px;">This permanently removes your account. This cannot be undone.</p>
+              <div class="form-group">
+                <label for="delPass">Enter your password to confirm</label>
+                <input type="password" id="delPass">
+                <small class="error" id="delPassError"></small>
+              </div>
+              <button type="button" class="btn btn-danger" id="deleteBtn">Delete My Account</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

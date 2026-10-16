@@ -431,3 +431,19 @@ a { text-decoration: none; }
 @media (max-width: 600px) {
   .bar-row { grid-template-columns: 100px 1fr 70px; }
 }
+
+/* Profile */
+.profile-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; align-items: start; }
+.profile-card { text-align: center; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--primary); color: var(--white); font-size: 36px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.profile-card h2 { font-size: 20px; }
+.profile-stats { display: flex; gap: 12px; justify-content: center; }
+.pstat { background: var(--bg); border-radius: 10px; padding: 12px 18px; min-width: 100px; }
+.pstat strong { display: block; font-size: 22px; }
+.pstat span { font-size: 12px; color: #6b7280; }
+.form-group input:disabled { background: #f3f4f6; color: #6b7280; cursor: not-allowed; }
+.danger-zone { border: 1.5px solid #fca5a5; }
+
+@media (max-width: 900px) {
+  .profile-grid { grid-template-columns: 1fr; }
+}
