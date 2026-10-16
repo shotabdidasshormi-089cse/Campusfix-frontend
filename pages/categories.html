@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buildings & Categories - CampusFix AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <h1>Buildings & Categories</h1>
+        <p class="page-sub">These lists are used in the issue report form and filters.</p>
+
+        <div class="two-col">
+          <!-- Buildings -->
+          <div class="card">
+            <h3 class="card-title">Buildings</h3>
+            <div class="add-row">
+              <input type="text" id="buildingInput" class="search-input" placeholder="New building name">
+              <button class="btn btn-primary" data-add="buildings">Add</button>
+            </div>
+            <small class="error" id="buildingError"></small>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>ID</th><th>Name</th><th>Used in</th><th>Actions</th></tr></thead>
+                <tbody id="buildingBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="card">
+            <h3 class="card-title">Categories</h3>
+            <div class="add-row">
+              <input type="text" id="categoryInput" class="search-input" placeholder="New category name">
+              <button class="btn btn-primary" data-add="categories">Add</button>
+            </div>
+            <small class="error" id="categoryError"></small>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>ID</th><th>Name</th><th>Used in</th><th>Actions</th></tr></thead>
+                <tbody id="categoryBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Edit popup -->
+  <div class="modal-overlay" id="editOverlay" hidden>
+    <div class="modal">
+      <h3 id="editTitle">Edit</h3>
+      <form id="editForm" novalidate>
+        <div class="form-group">
+          <label for="editName">Name</label>
+          <input type="text" id="editName">
+          <small class="error" id="editNameError"></small>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="editCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/seed.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/categories.js"></script>
+</body>
+</html>
