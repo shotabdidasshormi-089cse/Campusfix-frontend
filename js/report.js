@@ -93,6 +93,9 @@ function setupForm() {
         photo: photoData, reporterId: user.id, assignedTo: null, createdAt: today
       });
       addItem('updates', { issueId: issue.id, text: 'Issue reported', status: 'Open', date: today });
+            const sug = smartSuggest(title, description);
+      const crit = priority === 'Critical' || sug.priority === 'Critical';
+      notifyRole('admin', issue.id, (crit ? '🚨 Critical issue reported: ' : 'New issue reported: ') + title);
 
       document.getElementById('reportId').textContent = 'CF-' + String(issue.id).padStart(4, '0');
       document.getElementById('formCard').hidden = true;
@@ -107,3 +110,24 @@ function setupForm() {
     window.location.reload();
   });
 }
+// Student kom priority diye thakle admin ke hint dey (shudhu barate bole)
+function suggestionHint(i) {
+  if (i.status === 'Resolved') return '';
+  const s = smartSuggest(i.title, i.description);
+  const rank = { Normal: 1, High: 2, Critical: 3 };
+  if (rank[s.priority] <= rank[i.priority]) return '';
+  return '<div class="smart-hint">💡 Suggested: <strong>' + s.priority + '</strong> ' +
+    '<button class="link-btn" data-action="applyprio" data-id="' + i.id + '" data-priority="' + s.priority + '">Apply</button></div>';
+}
+
+document.getElementById('issueBody').addEventListener('click', function (e) {
+  const btn = e.target.closest('button[data-action="applyprio"]');
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  const issue = getById('issues', id);
+  if (!issue) return;
+  updateItem('issues', id, { priority: btn.dataset.priority });
+  addUpdate(id, 'Priority set to ' + btn.dataset.priority + ' by admin (smart suggestion)', issue.status);
+  showToast('Priority updated');
+  renderTable();
+});

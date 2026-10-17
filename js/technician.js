@@ -17,8 +17,13 @@ function today() {
 
 function addUpdate(issueId, text, status) {
   addItem('updates', { issueId: issueId, text: text, status: status, date: today() });
+  const issue = getById('issues', issueId);
+  if (!issue) return;
+  notify(issue.reporterId, issueId, fmtId(issueId) + ': ' + text);
+  if (status === 'Resolved') {
+    notifyRole('admin', issueId, fmtId(issueId) + ' was completed by ' + user.name);
+  }
 }
-
 function isUrgent(i) {
   return i.priority === 'Critical' && i.status !== 'Resolved';
 }

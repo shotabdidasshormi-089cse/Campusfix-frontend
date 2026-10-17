@@ -1,5 +1,4 @@
-const DB_NAMES = ['users', 'buildings', 'categories', 'issues', 'updates', 'notes'];
-
+const DB_NAMES = ['users', 'buildings', 'categories', 'issues', 'updates', 'notes', 'notifications'];
 function initDB() {
   DB_NAMES.forEach(function (name) {
     if (!localStorage.getItem('cf_' + name)) {

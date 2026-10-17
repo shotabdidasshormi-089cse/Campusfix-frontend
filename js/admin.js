@@ -19,6 +19,8 @@ function today() {
 
 function addUpdate(issueId, text, status) {
   addItem('updates', { issueId: issueId, text: text, status: status, date: today() });
+  const issue = getById('issues', issueId);
+  if (issue) notify(issue.reporterId, issueId, fmtId(issueId) + ': ' + text);
 }
 
 function getTechnicians() {
@@ -87,7 +89,7 @@ function renderTable() {
       '<td>' + fmtId(i.id) + '</td>' +
       '<td><strong>' + esc(i.title) + '</strong><br><small class="muted">' + esc(i.category) + ' | ' + esc(i.building) + ' - ' + esc(i.room) + '</small></td>' +
       '<td>' + esc(reporter ? reporter.name : 'Unknown') + '</td>' +
-      '<td>' + prioritySelect + '</td>' +
+      '<td>' + prioritySelect + suggestionHint(i) + '</td>' +
       '<td>' + statusBadge(i.status) + '</td>' +
       '<td>' + techSelect + '</td>' +
       '<td class="actions">' +
@@ -129,6 +131,7 @@ function setupTableActions() {
         const tech = getById('users', sel.value);
         updateItem('issues', id, { assignedTo: tech.id });
         addUpdate(id, 'Assigned to ' + tech.name, issue.status);
+        notify(tech.id, id, 'New task assigned to you: ' + fmtId(id) + ' ' + issue.title);
         showToast('Assigned to ' + tech.name);
       }
     }
@@ -206,3 +209,24 @@ function setupEditForm() {
     renderTable();
   });
 }
+// Student kom priority diye thakle admin ke hint dey (shudhu barate bole)
+function suggestionHint(i) {
+  if (i.status === 'Resolved') return '';
+  const s = smartSuggest(i.title, i.description);
+  const rank = { Normal: 1, High: 2, Critical: 3 };
+  if (rank[s.priority] <= rank[i.priority]) return '';
+  return '<div class="smart-hint">💡 Suggested: <strong>' + s.priority + '</strong> ' +
+    '<button class="link-btn" data-action="applyprio" data-id="' + i.id + '" data-priority="' + s.priority + '">Apply</button></div>';
+}
+
+document.getElementById('issueBody').addEventListener('click', function (e) {
+  const btn = e.target.closest('button[data-action="applyprio"]');
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  const issue = getById('issues', id);
+  if (!issue) return;
+  updateItem('issues', id, { priority: btn.dataset.priority });
+  addUpdate(id, 'Priority set to ' + btn.dataset.priority + ' by admin (smart suggestion)', issue.status);
+  showToast('Priority updated');
+  renderTable();
+});
